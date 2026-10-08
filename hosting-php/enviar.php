@@ -17,7 +17,7 @@ function respond(bool $ok, string $error = '', int $code = 200): void
         echo json_encode(['ok' => $ok, 'error' => $error]);
     } else {
         // Sense JavaScript: tornem a la pàgina
-        header('Location: index.html' . ($ok ? '?enviat=1' : '?error=1') . '#ressenya', true, 303);
+        header('Location: index.html' . ($ok ? '?enviat=1' : '?error=1') . '#opinio', true, 303);
     }
     exit;
 }
@@ -58,17 +58,26 @@ $email   = field('email', 150);
 $service = field('service', 20);
 $comment = field('comment', 2000);
 $rating  = (int)($_POST['rating'] ?? 0);
-$publish = !empty($_POST['publish']);
+$publish = ($_POST['publish'] ?? '') === 'yes';
 $privacy = !empty($_POST['privacy']);
-$lang    = in_array($_POST['lang'] ?? '', ['ca', 'es', 'fr'], true) ? $_POST['lang'] : 'ca';
+$lang    = in_array($_POST['lang'] ?? '', ['ca', 'es', 'fr', 'en'], true) ? $_POST['lang'] : 'ca';
+
+$recommendOptions = ['yes' => 'Sí', 'maybe' => 'Potser', 'no' => 'No'];
+$recommend = $recommendOptions[$_POST['recommend'] ?? ''] ?? '—';
+
+$displayOptions = ['full' => 'Nom i empresa', 'name' => 'Només el nom', 'initials' => 'Només les inicials'];
+$display = $publish ? ($displayOptions[$_POST['display'] ?? ''] ?? $displayOptions['initials']) : '—';
 
 $services = [
-    'web'       => 'Pàgines web',
-    'training'  => 'Formació',
-    'ai'        => 'Intel·ligència artificial',
-    'campaigns' => 'Campanyes publicitàries',
-    'design'    => 'Disseny gràfic i imprès',
-    'other'     => 'Altres',
+    'web'        => 'Disseny i desenvolupament web',
+    'shop'       => 'Botigues en línia',
+    'seo'        => 'SEO i màrqueting digital',
+    'social'     => 'Xarxes socials i Google Business Profile',
+    'design'     => 'Disseny gràfic, publicitat i comunicació',
+    'hosting'    => 'Allotjament, dominis, correu i suport',
+    'automation' => 'Automatització de processos',
+    'ai'         => 'Intel·ligència artificial i eines a mida',
+    'other'      => 'Altres',
 ];
 
 $errors = [];
@@ -115,11 +124,11 @@ if (!empty($config['save_csv']) && is_dir($dataDir)) {
         flock($fh, LOCK_EX);
         if ($isNew) {
             fwrite($fh, "\xEF\xBB\xBF"); // BOM perquè Excel llegeixi bé els accents
-            fputcsv($fh, ['Data', 'Idioma', 'Nom', 'Empresa', 'Correu', 'Servei', 'Valoració', 'Publicable', 'Comentari'], ';');
+            fputcsv($fh, ['Data', 'Idioma', 'Nom', 'Empresa', 'Correu', 'Servei', 'Satisfacció', 'Recomanaria', 'Publicable', 'Mostrar com', 'Comentari'], ';');
         }
         // Evitem que Excel interpreti fórmules
         $safe = fn(string $s) => preg_match('/^[=+\-@]/', $s) ? "'" . $s : $s;
-        fputcsv($fh, [$date, $lang, $safe($name), $safe($company), $safe($email), $services[$service], $rating, $publish ? 'Sí' : 'No', $safe($comment)], ';');
+        fputcsv($fh, [$date, $lang, $safe($name), $safe($company), $safe($email), $services[$service], $rating, $recommend, $publish ? 'Sí' : 'No', $display, $safe($comment)], ';');
         flock($fh, LOCK_UN);
         fclose($fh);
     }
@@ -127,10 +136,10 @@ if (!empty($config['save_csv']) && is_dir($dataDir)) {
 
 // --- Correu ---------------------------------------------------------------
 $stars = str_repeat('★', $rating) . str_repeat('☆', 5 - $rating);
-$subject = "Nova ressenya ($rating/5) · $name";
+$subject = "Nova opinió ($rating/5) · $name";
 
 $lines = [
-    "Nova ressenya rebuda des del web",
+    "Nova opinió rebuda des del web",
     str_repeat('-', 40),
     "Data:        $date",
     "Idioma:      " . strtoupper($lang),
@@ -138,8 +147,10 @@ $lines = [
     "Empresa:     " . ($company !== '' ? $company : '—'),
     "Correu:      " . ($email !== '' ? $email : '—'),
     "Servei:      {$services[$service]}",
-    "Valoració:   $stars ($rating/5)",
-    "Publicable:  " . ($publish ? 'SÍ, autoritza publicar-la' : 'NO, només per a ús intern'),
+    "Satisfacció: $stars ($rating/5)",
+    "Recomanaria: $recommend",
+    "Publicació:  " . ($publish ? 'SÍ, autoritza publicar-la' : 'NO, només per a ús intern'),
+    "Mostrar com: $display",
     str_repeat('-', 40),
     "",
     $comment,

@@ -97,7 +97,8 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
 .stars input:checked ~ label { color: var(--star); }
 .stars label:hover { transform: scale(1.1); }
 .stars input:focus-visible + label { outline: 2px solid var(--text); outline-offset: 2px; border-radius: 4px; }
-.rating.invalid-group .stars label { color: #f1c7c1; }
+.invalid-group .stars label { color: #f1c7c1; }
+.invalid-group legend { color: var(--err); }
 
 .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--muted); margin: 0 0 12px; cursor: pointer; }
 .check input { margin-top: 4px; accent-color: var(--text); flex: none; }
@@ -131,3 +132,37 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--t
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* --- Afegits v2 --- */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.testbar { background: #fff4d6; color: #6b4e00; text-align: center; font-size: 13px; font-weight: 600; padding: 6px 16px; border-bottom: 1px solid #f0dfa8; }
+
+.brand__full { font-weight: 400; color: var(--muted); }
+
+.services__head { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; flex-wrap: wrap; }
+.philosophy { color: var(--muted); margin: 0 0 20px; max-width: 46ch; }
+.langs { color: var(--muted); font-size: 14px; margin: 16px 0 0; }
+
+.block { border: 0; padding: 0; margin: 0 0 28px; min-width: 0; }
+.block + .block { padding-top: 24px; border-top: 1px solid var(--line); }
+.block__title { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; padding: 0; margin: 0 0 4px; }
+.block__help { color: var(--muted); font-size: 14px; margin: 0 0 18px; }
+
+.pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.pills label { margin: 0; font-weight: 500; cursor: pointer; }
+.pills input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pills span { display: inline-block; padding: 7px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); font-size: 14px; transition: background .15s ease, color .15s ease; }
+.pills input:checked + span { background: var(--text); color: var(--bg); border-color: var(--text); }
+.pills input:focus-visible + span { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.choice .check { color: var(--text); }
+.display { margin-top: 12px; }
+
+.privacy { font-size: 14px; color: var(--muted); margin: 0 0 14px; }
+.privacy summary { cursor: pointer; color: var(--text); font-weight: 600; }
+.privacy p { margin: 8px 0 0; }
+.consent { color: var(--text); }
+.block__title { float: left; width: 100%; }
+.block__help { clear: both; }
+@media (max-width: 760px) { .brand__full { display: none; } }
