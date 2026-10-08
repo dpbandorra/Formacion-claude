@@ -9,7 +9,7 @@
  * - testMode: mostra la franja "Entorn de proves · només dades fictícies".
  */
 window.DPB_CONFIG = {
-  formsubmit: '',
+  formsubmit: 'maneltamarit@gmail.com',
   phpEndpoint: '',
   testMode: true
 };
