@@ -1,6 +1,11 @@
 (function () {
   'use strict';
 
+  // MODE PROVA (GitHub Pages, sense PHP): posa aquí el correu on vols rebre
+  // les ressenyes i s'enviaran a través de formsubmit.co.
+  // Deixa-ho buit ('') quan la pàgina estigui al teu hosting: llavors fa servir enviar.php.
+  var TEST_EMAIL = '';
+
   var T = {
     ca: {
       'hero.eyebrow': 'Publicitat i màrqueting digital',
@@ -202,14 +207,36 @@
     btn.textContent = t('form.sending');
     setStatus('');
 
-    fetch(form.action, {
+    var url = form.action;
+    var body = new FormData(form);
+    if (TEST_EMAIL) {
+      if (body.get('website')) return; // camp parany: robot
+      var rating = Number(body.get('rating'));
+      var service = form.querySelector('#service option:checked').textContent;
+      url = 'https://formsubmit.co/ajax/' + encodeURIComponent(TEST_EMAIL);
+      body = new FormData();
+      body.append('_subject', 'Nova ressenya (' + rating + '/5) · ' + form.elements.name.value.trim());
+      body.append('_template', 'table');
+      body.append('_captcha', 'false');
+      body.append('Nom', form.elements.name.value.trim());
+      body.append('Empresa', form.elements.company.value.trim() || '—');
+      body.append('Correu', form.elements.email.value.trim() || '—');
+      if (form.elements.email.value.trim()) body.append('_replyto', form.elements.email.value.trim());
+      body.append('Servei', service);
+      body.append('Valoració', '★★★★★'.slice(0, rating) + '☆☆☆☆☆'.slice(0, 5 - rating) + ' (' + rating + '/5)');
+      body.append('Publicable', form.elements.publish.checked ? 'Sí' : 'No');
+      body.append('Idioma', current.toUpperCase());
+      body.append('Comentari', form.elements.comment.value.trim());
+    }
+
+    fetch(url, {
       method: 'POST',
-      body: new FormData(form),
+      body: body,
       headers: { 'Accept': 'application/json' }
     })
       .then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
       .then(function (data) {
-        if (data && data.ok) {
+        if (data && (data.ok || data.success === 'true' || data.success === true)) {
           form.classList.add('sent');
           form.innerHTML = '<h3></h3><p></p>';
           form.querySelector('h3').textContent = t('form.thanksTitle');
