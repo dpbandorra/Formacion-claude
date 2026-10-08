@@ -1,180 +1,326 @@
 <!doctype html>
-<html lang="ca">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DPB – Disseny Public Bucles · La vostra opinió</title>
-  <meta name="description" content="Valoreu els serveis de DPB – Disseny Public Bucles, agència de disseny, comunicació, màrqueting digital i tecnologia a Andorra.">
+  <title>DPB · Ideas Visuales · Tu opinión</title>
+  <meta name="description" content="Deja tu opinión sobre DPB – Disseny Public Bucles, estudio de diseño, comunicación y tecnología en Andorra.">
   <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#fbf9f7">
   <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <div class="testbar" id="testbar" hidden>
-    <span data-i18n="test.banner">Entorn de proves · Utilitzeu només dades fictícies</span>
+    <span data-i18n="test.banner">Entorno de pruebas · Utiliza solo datos ficticios</span>
   </div>
 
-  <header class="topbar">
-    <div class="wrap topbar__inner">
-      <a class="brand" href="#top">
+  <header class="header">
+    <div class="wrap header__inner">
+      <a class="brand" href="#top" aria-label="DPB · Ideas Visuales">
         <span class="brand__mark" aria-hidden="true"></span>
-        <span class="brand__name"><strong>DPB</strong> <span class="brand__full">Disseny Public Bucles</span></span>
+        <span class="brand__text">
+          <strong>DPB</strong>
+          <span>Ideas Visuales</span>
+        </span>
       </a>
-      <nav class="lang" aria-label="Idioma / Language">
+      <nav class="nav" aria-label="Principal">
+        <a href="#quienes" data-i18n="nav.about">Quiénes somos</a>
+        <a href="#opinion" data-i18n="nav.reviews">Opiniones</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Idioma / Language">
         <button type="button" data-lang="ca" lang="ca">CA</button>
         <button type="button" data-lang="es" lang="es">ES</button>
         <button type="button" data-lang="fr" lang="fr">FR</button>
         <button type="button" data-lang="en" lang="en">EN</button>
-      </nav>
+      </div>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero wrap">
-      <p class="eyebrow" data-i18n="hero.eyebrow">Disseny, comunicació i tecnologia · Andorra</p>
-      <h1 data-i18n="hero.title">La vostra opinió és la nostra millor carta de presentació.</h1>
-      <p class="lead" data-i18n="hero.lead">Si heu treballat amb nosaltres, ens agradaria saber com ha anat. Només us prendrà un parell de minuts.</p>
-      <a class="btn" href="#opinio" data-i18n="hero.cta">Deixar la meva opinió</a>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Diseño, comunicación y tecnología · Andorra</p>
+          <h1 data-i18n="hero.title">Tu opinión es una de las mejores formas de ayudarnos a crecer.</h1>
+          <p class="lead" data-i18n="hero.lead">Si has trabajado con nosotros, nos encantará saber cómo ha sido tu experiencia. Tu opinión nos ayuda a mejorar y también orienta a futuros clientes.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#opinion" data-i18n="hero.cta">Dejar mi opinión</a>
+            <a class="btn btn--ghost" href="#quienes" data-i18n="hero.cta2">Conocer DPB</a>
+          </div>
+        </div>
+
+        <div class="hero__art" aria-hidden="false">
+          <span class="shape shape--blob" aria-hidden="true"></span>
+          <span class="shape shape--ring" aria-hidden="true"></span>
+          <span class="shape shape--dots" aria-hidden="true"></span>
+
+          <div class="idcard">
+            <div class="idcard__head">
+              <span class="idcard__mark" aria-hidden="true"></span>
+              <div>
+                <p class="idcard__name">DPB <span>·</span> Ideas Visuales</p>
+                <p class="idcard__kicker" data-i18n="hero.kicker">Estudio en Andorra</p>
+              </div>
+            </div>
+            <ul class="values">
+              <li>
+                <span class="values__n">01</span>
+                <div><strong data-i18n="hero.v1">Cercanía</strong><span data-i18n="hero.v1d">Trato directo y personal en cada proyecto.</span></div>
+              </li>
+              <li>
+                <span class="values__n">02</span>
+                <div><strong data-i18n="hero.v2">Soluciones a medida</strong><span data-i18n="hero.v2d">Adaptamos cada propuesta a lo que necesitas.</span></div>
+              </li>
+              <li>
+                <span class="values__n">03</span>
+                <div><strong data-i18n="hero.v3">Diseño y tecnología</strong><span data-i18n="hero.v3d">Creatividad y criterio técnico, juntos.</span></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="chip chip--langs">
+            <span class="chip__big">CA · ES · FR · EN</span>
+            <span data-i18n="hero.chipLangs">Trabajamos en 4 idiomas</span>
+          </div>
+          <div class="chip chip--time">
+            <span class="chip__big">≈ 2 min</span>
+            <span data-i18n="hero.chipTime">para dejar tu opinión</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="services wrap" aria-labelledby="services-title">
-      <div class="services__head">
-        <h2 id="services-title" class="section-title" data-i18n="services.title">Què fem</h2>
-        <p class="philosophy" data-i18n="services.philosophy">Solucions pràctiques i personalitzades, adaptades a cada client, amb un tracte proper i professional.</p>
-      </div>
-      <ul class="services__list">
-        <li><span class="num">01</span><span data-i18n="svc.web">Disseny i desenvolupament web</span></li>
-        <li><span class="num">02</span><span data-i18n="svc.shop">Botigues en línia</span></li>
-        <li><span class="num">03</span><span data-i18n="svc.seo">SEO i màrqueting digital</span></li>
-        <li><span class="num">04</span><span data-i18n="svc.social">Xarxes socials i Google Business Profile</span></li>
-        <li><span class="num">05</span><span data-i18n="svc.design">Disseny gràfic, publicitat i comunicació</span></li>
-        <li><span class="num">06</span><span data-i18n="svc.hosting">Allotjament, dominis, correu i suport</span></li>
-        <li><span class="num">07</span><span data-i18n="svc.automation">Automatització de processos</span></li>
-        <li><span class="num">08</span><span data-i18n="svc.ai">Intel·ligència artificial i eines a mida</span></li>
-      </ul>
-      <p class="langs" data-i18n="services.langs">Treballem en català, castellà, francès i anglès.</p>
-    </section>
+    <!-- FORMULARIO -->
+    <section id="opinion" class="feedback" aria-labelledby="form-title">
+      <div class="wrap feedback__grid">
+        <aside class="feedback__intro">
+          <p class="eyebrow" data-i18n="nav.reviews">Opiniones</p>
+          <h2 id="form-title" data-i18n="form.title">Déjanos tu opinión</h2>
+          <p class="lead" data-i18n="form.intro">Tu comentario nos ayuda a mejorar y, si tú quieres, también puede convertirse en un testimonio útil para otras personas.</p>
+          <ol class="steps">
+            <li data-i18n="steps.1">Tus datos</li>
+            <li data-i18n="steps.2">Tu comentario</li>
+            <li data-i18n="steps.3">Tu valoración</li>
+            <li data-i18n="steps.4">Publicación (opcional)</li>
+          </ol>
+          <p class="privacy-note">
+            <span class="lock" aria-hidden="true"></span>
+            <span data-i18n="steps.note">Lo que escribas es privado, salvo que nos autorices a publicarlo.</span>
+          </p>
+        </aside>
 
-    <section id="opinio" class="review wrap" aria-labelledby="form-title">
-      <div class="review__intro">
-        <h2 id="form-title" class="section-title" data-i18n="form.title">Deixa la teva opinió</h2>
-        <p data-i18n="form.intro">Els vostres comentaris ens ajuden a millorar i donen confiança a qui encara no ens coneix.</p>
-      </div>
+        <form id="review-form" class="formcard" method="post" novalidate>
+          <noscript><p class="status err">JavaScript is required to send this form.</p></noscript>
 
-      <form id="review-form" class="card" method="post" novalidate>
-        <noscript><p class="status err">Cal activar JavaScript per enviar el formulari.</p></noscript>
-
-        <!-- 1. Valoració privada -->
-        <fieldset class="block">
-          <legend class="block__title" data-i18n="form.step1">1 · La teva valoració</legend>
-          <p class="block__help" data-i18n="form.step1Help">Aquesta part és privada: només la llegeix el nostre equip.</p>
-
-          <div class="grid">
+          <!-- A. Datos básicos -->
+          <fieldset class="group">
+            <legend class="group__title"><span class="group__n">1</span><span data-i18n="form.secA">Tus datos</span></legend>
             <div class="field">
-              <label for="name" data-i18n="form.name">Nom i cognoms</label>
+              <label for="name" data-i18n="form.name">Nombre y apellidos</label>
               <input id="name" name="name" type="text" autocomplete="name" maxlength="100" required>
             </div>
-            <div class="field">
-              <label for="company"><span data-i18n="form.company">Empresa</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
-              <input id="company" name="company" type="text" autocomplete="organization" maxlength="100">
+            <div class="grid2">
+              <div class="field">
+                <label for="company"><span data-i18n="form.company">Empresa</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
+                <input id="company" name="company" type="text" autocomplete="organization" maxlength="100">
+              </div>
+              <div class="field">
+                <label for="email"><span data-i18n="form.email">Correo electrónico</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
+                <input id="email" name="email" type="email" autocomplete="email" maxlength="150" aria-describedby="email-help">
+              </div>
             </div>
-            <div class="field">
-              <label for="email"><span data-i18n="form.email">Correu electrònic</span> <span class="opt" data-i18n="form.optional">(opcional)</span></label>
-              <input id="email" name="email" type="email" autocomplete="email" maxlength="150" aria-describedby="email-help">
-              <small id="email-help" data-i18n="form.emailHelp">No es publicarà mai. Només per si us volem respondre.</small>
-            </div>
-            <div class="field">
-              <label for="service" data-i18n="form.service">Servei rebut</label>
-              <select id="service" name="service" required>
-                <option value="" data-i18n="form.choose">Tria una opció</option>
-                <option value="web" data-i18n="svc.web">Disseny i desenvolupament web</option>
-                <option value="shop" data-i18n="svc.shop">Botigues en línia</option>
-                <option value="seo" data-i18n="svc.seo">SEO i màrqueting digital</option>
-                <option value="social" data-i18n="svc.social">Xarxes socials i Google Business Profile</option>
-                <option value="design" data-i18n="svc.design">Disseny gràfic, publicitat i comunicació</option>
-                <option value="hosting" data-i18n="svc.hosting">Allotjament, dominis, correu i suport</option>
-                <option value="automation" data-i18n="svc.automation">Automatització de processos</option>
-                <option value="ai" data-i18n="svc.ai">Intel·ligència artificial i eines a mida</option>
-                <option value="other" data-i18n="svc.other">Altres</option>
-              </select>
-            </div>
-          </div>
+            <p class="help" id="email-help" data-i18n="form.emailHelp">Nunca se publicará. Solo lo utilizaremos si necesitamos responderte.</p>
+          </fieldset>
 
-          <fieldset class="field rating">
-            <legend><span data-i18n="form.rating">Satisfacció general</span> <span class="opt" data-i18n="form.ratingHelp">(1 = gens satisfet · 5 = molt satisfet)</span></legend>
-            <div class="stars">
-              <input type="radio" id="r5" name="rating" value="5" required><label for="r5"><span class="sr">5/5</span>★</label>
-              <input type="radio" id="r4" name="rating" value="4"><label for="r4"><span class="sr">4/5</span>★</label>
-              <input type="radio" id="r3" name="rating" value="3"><label for="r3"><span class="sr">3/5</span>★</label>
-              <input type="radio" id="r2" name="rating" value="2"><label for="r2"><span class="sr">2/5</span>★</label>
-              <input type="radio" id="r1" name="rating" value="1"><label for="r1"><span class="sr">1/5</span>★</label>
+          <!-- B. Comentario -->
+          <fieldset class="group">
+            <legend class="group__title"><span class="group__n">2</span><span data-i18n="form.secB">Tu comentario</span></legend>
+            <div class="field">
+              <label for="comment" class="sr" data-i18n="form.comment">Tu comentario</label>
+              <textarea id="comment" name="comment" rows="6" minlength="10" maxlength="2000" required data-i18n-placeholder="form.commentPh" placeholder="Cuéntanos qué te ha gustado, cómo ha sido tu experiencia o qué podríamos mejorar."></textarea>
             </div>
           </fieldset>
 
-          <fieldset class="field">
-            <legend><span data-i18n="form.recommend">Ens recomanaries?</span> <span class="opt" data-i18n="form.optional">(opcional)</span></legend>
-            <div class="pills">
-              <label><input type="radio" name="recommend" value="yes"><span data-i18n="form.yes">Sí</span></label>
-              <label><input type="radio" name="recommend" value="maybe"><span data-i18n="form.maybe">Potser</span></label>
-              <label><input type="radio" name="recommend" value="no"><span data-i18n="form.no">No</span></label>
+          <!-- C. Valoración y recomendación -->
+          <fieldset class="group">
+            <legend class="group__title"><span class="group__n">3</span><span data-i18n="form.secC">Tu valoración</span></legend>
+            <div class="grid2 grid2--rating">
+              <fieldset class="field rating">
+                <legend data-i18n="form.rating">Satisfacción general</legend>
+                <div class="stars">
+                  <input type="radio" id="r5" name="rating" value="5" required><label for="r5"><span class="sr">5/5</span>★</label>
+                  <input type="radio" id="r4" name="rating" value="4"><label for="r4"><span class="sr">4/5</span>★</label>
+                  <input type="radio" id="r3" name="rating" value="3"><label for="r3"><span class="sr">3/5</span>★</label>
+                  <input type="radio" id="r2" name="rating" value="2"><label for="r2"><span class="sr">2/5</span>★</label>
+                  <input type="radio" id="r1" name="rating" value="1"><label for="r1"><span class="sr">1/5</span>★</label>
+                </div>
+                <p class="help" data-i18n="form.ratingHelp">1 = nada satisfecho · 5 = muy satisfecho</p>
+              </fieldset>
+              <fieldset class="field">
+                <legend><span data-i18n="form.recommend">¿Nos recomendarías?</span></legend>
+                <div class="pills">
+                  <label><input type="radio" name="recommend" value="yes"><span data-i18n="form.yes">Sí</span></label>
+                  <label><input type="radio" name="recommend" value="maybe"><span data-i18n="form.maybe">Quizá</span></label>
+                  <label><input type="radio" name="recommend" value="no"><span data-i18n="form.no">No</span></label>
+                </div>
+              </fieldset>
             </div>
           </fieldset>
 
-          <div class="field">
-            <label for="comment" data-i18n="form.comment">El teu comentari</label>
-            <textarea id="comment" name="comment" rows="5" minlength="10" maxlength="2000" required data-i18n-placeholder="form.commentPh" placeholder="Què t'ha agradat? Què podríem millorar?"></textarea>
+          <!-- D. Testimonio público -->
+          <fieldset class="group">
+            <legend class="group__title"><span class="group__n">4</span><span data-i18n="pub.title">¿Quieres que podamos publicar tu opinión?</span></legend>
+            <p class="help help--lead" data-i18n="pub.text">Solo publicaremos tu comentario si nos das permiso expresamente. Si no, quedará únicamente para uso interno.</p>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="publish" value="no" checked>
+                <span class="option__box">
+                  <span class="option__icon option__icon--private" aria-hidden="true"></span>
+                  <span data-i18n="pub.no">No, mi opinión es solo para uso interno.</span>
+                </span>
+              </label>
+              <label class="option">
+                <input type="radio" name="publish" value="yes">
+                <span class="option__box">
+                  <span class="option__icon option__icon--public" aria-hidden="true"></span>
+                  <span data-i18n="pub.yes">Sí, autorizo que se publique mi comentario y mi valoración como testimonio.</span>
+                </span>
+              </label>
+            </div>
+          </fieldset>
+
+          <!-- E. Protección de datos -->
+          <div class="privacy">
+            <p class="privacy__title" data-i18n="privacy.title">Información sobre protección de datos</p>
+            <p data-i18n="privacy.short">Tus datos se utilizarán únicamente para gestionar esta opinión. Si autorizas la publicación, solo mostraremos la información necesaria como testimonio.</p>
+            <details>
+              <summary data-i18n="privacy.more">Más información</summary>
+              <p data-i18n="privacy.text">Responsable: DPB – Disseny Public Bucles (Andorra).</p>
+              <p data-i18n="privacy.processor" id="privacy-processor" hidden>Durante esta fase, los datos se envían por correo electrónico a través del servicio FormSubmit.</p>
+            </details>
+            <label class="check">
+              <input type="checkbox" name="privacy" value="1" required>
+              <span data-i18n="form.privacy">He leído la información sobre protección de datos y acepto el tratamiento de mis datos para gestionar esta opinión.</span>
+            </label>
           </div>
-        </fieldset>
 
-        <!-- 2. Autorització de publicació (separada i opcional) -->
-        <fieldset class="block">
-          <legend class="block__title" data-i18n="form.step2">2 · Testimoni públic (opcional)</legend>
-          <p class="block__help" data-i18n="form.step2Help">Només publicarem la teva opinió si ho autoritzes expressament. Pots retirar l'autorització quan vulguis.</p>
-
-          <div class="choice">
-            <label class="check"><input type="radio" name="publish" value="no" checked><span data-i18n="form.publishNo">No, la meva opinió és només per a ús intern.</span></label>
-            <label class="check"><input type="radio" name="publish" value="yes"><span data-i18n="form.publishYes">Sí, autoritzo publicar el meu comentari i la valoració com a testimoni.</span></label>
+          <!-- Camp parany contra robots: ha de quedar buit -->
+          <div class="hp" aria-hidden="true">
+            <label for="website">Website</label>
+            <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
+          <input type="hidden" name="lang" id="lang-field" value="es">
+          <input type="hidden" name="ts" id="ts-field" value="">
 
-          <div class="field display" id="display-field" hidden>
-            <label for="display" data-i18n="form.display">Com vols aparèixer al testimoni?</label>
-            <select id="display" name="display">
-              <option value="full" data-i18n="form.displayFull">Nom i empresa</option>
-              <option value="name" data-i18n="form.displayName">Només el nom</option>
-              <option value="initials" data-i18n="form.displayInitials">Només les inicials</option>
-            </select>
-          </div>
-        </fieldset>
+          <!-- F. Botón -->
+          <button class="btn btn--primary btn--full" type="submit" data-i18n="form.submit">Enviar mi opinión</button>
+          <p class="status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
 
-        <!-- 3. Protecció de dades -->
-        <details class="privacy">
-          <summary data-i18n="privacy.summary">Informació sobre protecció de dades</summary>
-          <p data-i18n="privacy.text">Responsable: DPB – Disseny Public Bucles (Andorra). Finalitat: gestionar la vostra opinió i, només si ho autoritzeu, publicar-la com a testimoni. El correu electrònic no es publica mai. Podeu exercir els drets d'accés, rectificació, supressió i oposició, i retirar l'autorització de publicació en qualsevol moment, contactant amb nosaltres. Normativa aplicable: Llei 29/2021 qualificada de protecció de dades personals d'Andorra.</p>
-          <p data-i18n="privacy.processor" id="privacy-processor" hidden>Durant aquesta fase, les dades s'envien per correu electrònic a través del servei FormSubmit.</p>
-        </details>
-
-        <label class="check consent">
-          <input type="checkbox" name="privacy" value="1" required>
-          <span data-i18n="form.privacy">He llegit la informació sobre protecció de dades i accepto que es tractin les meves dades per gestionar aquesta opinió.</span>
-        </label>
-
-        <!-- Camp parany contra robots: ha de quedar buit -->
-        <div class="hp" aria-hidden="true">
-          <label for="website">Website</label>
-          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+    <!-- QUIÉNES SOMOS -->
+    <section id="quienes" class="about" aria-labelledby="about-title">
+      <div class="wrap about__grid">
+        <div class="about__intro">
+          <p class="eyebrow">DPB · Ideas Visuales</p>
+          <h2 id="about-title" data-i18n="about.title">Quiénes somos</h2>
+          <p class="lead" data-i18n="about.text">En DPB ayudamos a negocios y proyectos a comunicar mejor, vender mejor y trabajar de forma más práctica, combinando creatividad, estrategia y tecnología.</p>
+          <p class="about__langs">
+            <span class="about__flagline" aria-hidden="true">CA · ES · FR · EN</span>
+            <span data-i18n="about.langs">Trabajamos en catalán, castellano, francés e inglés.</span>
+          </p>
         </div>
-        <input type="hidden" name="lang" id="lang-field" value="ca">
-        <input type="hidden" name="ts" id="ts-field" value="">
 
-        <button class="btn btn--full" type="submit" data-i18n="form.submit">Enviar la meva opinió</button>
-        <p class="status" id="form-status" role="status" aria-live="polite"></p>
-      </form>
+        <div class="accordion">
+          <details>
+            <summary><span class="acc__n">01</span><span data-i18n="svc.web">Diseño y desarrollo web</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.webD">Creamos y mejoramos páginas web pensadas para comunicar bien, transmitir confianza y adaptarse a cada proyecto.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">02</span><span data-i18n="svc.shop">Tiendas online</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.shopD">Desarrollamos ecommerce claros y funcionales, orientados a facilitar la gestión y mejorar la experiencia de compra.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">03</span><span data-i18n="svc.seo">SEO y marketing digital</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.seoD">Trabajamos el posicionamiento, la visibilidad y la captación para ayudar a que cada negocio llegue a más personas.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">04</span><span data-i18n="svc.social">Redes sociales y Google Business Profile</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.socialD">Ayudamos a cuidar la presencia digital del negocio, mejorar su imagen y reforzar su visibilidad local.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">05</span><span data-i18n="svc.design">Diseño gráfico, publicidad y comunicación</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.designD">Diseñamos piezas visuales y mensajes que refuerzan la identidad de marca y hacen más clara la comunicación.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">06</span><span data-i18n="svc.hosting">Alojamiento, dominios, correo y soporte</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.hostingD">Ofrecemos acompañamiento técnico en aspectos clave para que todo funcione con estabilidad y tranquilidad.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">07</span><span data-i18n="svc.automation">Automatización de procesos</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.automationD">Buscamos formas de ahorrar tiempo y simplificar tareas mediante automatizaciones útiles y bien pensadas.</p>
+          </details>
+          <details>
+            <summary><span class="acc__n">08</span><span data-i18n="svc.ai">Inteligencia artificial y herramientas a medida</span><span class="acc__icon" aria-hidden="true"></span></summary>
+            <p data-i18n="svc.aiD">Exploramos soluciones prácticas con IA y desarrollamos herramientas personalizadas cuando el proyecto lo necesita.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS (contenido estático y curado a mano; no se genera automáticamente) -->
+    <section class="testimonials" aria-labelledby="testi-title">
+      <div class="wrap">
+        <div class="testimonials__head">
+          <div>
+            <p class="eyebrow" data-i18n="testi.eyebrow">Testimonios</p>
+            <h2 id="testi-title" data-i18n="testi.title">Lo que más se valora de trabajar con nosotros</h2>
+          </div>
+          <p class="testimonials__note" data-i18n="testi.note">Textos de ejemplo. Aquí mostraremos testimonios reales seleccionados a mano, siempre con la autorización expresa de sus autores.</p>
+        </div>
+        <div class="quotes">
+          <figure class="quote">
+            <span class="quote__tag" data-i18n="testi.tag">Ejemplo</span>
+            <blockquote data-i18n="testi.q1">“Trato cercano, soluciones claras y una forma de trabajar muy práctica.”</blockquote>
+            <figcaption data-i18n="svc.web">Diseño y desarrollo web</figcaption>
+          </figure>
+          <figure class="quote quote--accent">
+            <span class="quote__tag" data-i18n="testi.tag">Ejemplo</span>
+            <blockquote data-i18n="testi.q2">“Nos sentimos acompañados durante todo el proceso.”</blockquote>
+            <figcaption data-i18n="svc.shop">Tiendas online</figcaption>
+          </figure>
+          <figure class="quote">
+            <span class="quote__tag" data-i18n="testi.tag">Ejemplo</span>
+            <blockquote data-i18n="testi.q3">“Se nota la combinación de diseño, criterio y soporte técnico.”</blockquote>
+            <figcaption data-i18n="svc.automation">Automatización de procesos</figcaption>
+          </figure>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer__inner">
+  <footer id="contacto" class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="DPB · Ideas Visuales">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__text"><strong>DPB</strong><span>Ideas Visuales</span></span>
+        </a>
+        <p class="footer__place" data-i18n="footer.place">Andorra</p>
+        <p class="footer__tag" data-i18n="footer.tagline">Diseño · Comunicación · Tecnología</p>
+      </div>
+      <div class="footer__contact">
+        <p class="footer__label" data-i18n="nav.contact">Contacto</p>
+        <p data-i18n="footer.contact">¿Quieres comentarnos algo? Déjanos tu mensaje a través del formulario.</p>
+        <a class="link" href="#opinion" data-i18n="footer.contactLink">Ir al formulario →</a>
+      </div>
+    </div>
+    <div class="wrap footer__bottom">
       <span>© <span id="year"></span> DPB – Disseny Public Bucles</span>
-      <span data-i18n="footer.tagline">Andorra · Disseny · Comunicació · Tecnologia</span>
+      <span data-i18n="about.langs">Trabajamos en catalán, castellano, francés e inglés.</span>
     </div>
   </footer>
 

@@ -55,7 +55,6 @@ function field(string $key, int $max): string
 $name    = field('name', 100);
 $company = field('company', 100);
 $email   = field('email', 150);
-$service = field('service', 20);
 $comment = field('comment', 2000);
 $rating  = (int)($_POST['rating'] ?? 0);
 $publish = ($_POST['publish'] ?? '') === 'yes';
@@ -65,24 +64,8 @@ $lang    = in_array($_POST['lang'] ?? '', ['ca', 'es', 'fr', 'en'], true) ? $_PO
 $recommendOptions = ['yes' => 'Sí', 'maybe' => 'Potser', 'no' => 'No'];
 $recommend = $recommendOptions[$_POST['recommend'] ?? ''] ?? '—';
 
-$displayOptions = ['full' => 'Nom i empresa', 'name' => 'Només el nom', 'initials' => 'Només les inicials'];
-$display = $publish ? ($displayOptions[$_POST['display'] ?? ''] ?? $displayOptions['initials']) : '—';
-
-$services = [
-    'web'        => 'Disseny i desenvolupament web',
-    'shop'       => 'Botigues en línia',
-    'seo'        => 'SEO i màrqueting digital',
-    'social'     => 'Xarxes socials i Google Business Profile',
-    'design'     => 'Disseny gràfic, publicitat i comunicació',
-    'hosting'    => 'Allotjament, dominis, correu i suport',
-    'automation' => 'Automatització de processos',
-    'ai'         => 'Intel·ligència artificial i eines a mida',
-    'other'      => 'Altres',
-];
-
 $errors = [];
 if ($name === '') $errors[] = 'name';
-if (!isset($services[$service])) $errors[] = 'service';
 if (mb_strlen($comment) < 10) $errors[] = 'comment';
 if ($rating < 1 || $rating > 5) $errors[] = 'rating';
 if (!$privacy) $errors[] = 'privacy';
@@ -124,11 +107,11 @@ if (!empty($config['save_csv']) && is_dir($dataDir)) {
         flock($fh, LOCK_EX);
         if ($isNew) {
             fwrite($fh, "\xEF\xBB\xBF"); // BOM perquè Excel llegeixi bé els accents
-            fputcsv($fh, ['Data', 'Idioma', 'Nom', 'Empresa', 'Correu', 'Servei', 'Satisfacció', 'Recomanaria', 'Publicable', 'Mostrar com', 'Comentari'], ';');
+            fputcsv($fh, ['Data', 'Idioma', 'Nom', 'Empresa', 'Correu', 'Satisfacció', 'Recomanaria', 'Publicable', 'Comentari'], ';');
         }
         // Evitem que Excel interpreti fórmules
         $safe = fn(string $s) => preg_match('/^[=+\-@]/', $s) ? "'" . $s : $s;
-        fputcsv($fh, [$date, $lang, $safe($name), $safe($company), $safe($email), $services[$service], $rating, $recommend, $publish ? 'Sí' : 'No', $display, $safe($comment)], ';');
+        fputcsv($fh, [$date, $lang, $safe($name), $safe($company), $safe($email), $rating, $recommend, $publish ? 'Sí' : 'No', $safe($comment)], ';');
         flock($fh, LOCK_UN);
         fclose($fh);
     }
@@ -146,11 +129,9 @@ $lines = [
     "Nom:         $name",
     "Empresa:     " . ($company !== '' ? $company : '—'),
     "Correu:      " . ($email !== '' ? $email : '—'),
-    "Servei:      {$services[$service]}",
     "Satisfacció: $stars ($rating/5)",
     "Recomanaria: $recommend",
     "Publicació:  " . ($publish ? 'SÍ, autoritza publicar-la' : 'NO, només per a ús intern'),
-    "Mostrar com: $display",
     str_repeat('-', 40),
     "",
     $comment,
